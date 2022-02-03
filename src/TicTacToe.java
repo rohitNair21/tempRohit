@@ -111,7 +111,7 @@ public class TicTacToe extends Canvas {
     public static boolean full(int[][] board) {
         for (int x = 0; x <= board.length - 1; x++) {
             for (int y = 0; y <= board[0].length - 1; y++) {
-                if (board[x][y] == 0) {
+                if (board[x][y] == 0) { //as "0" represents an empty spot, we check every spot to check if there is any empty spots
                     return false;
                 }
             }
@@ -128,9 +128,9 @@ public class TicTacToe extends Canvas {
      * @return true if the piece occurs three times consecutively in the specified row, else false
      */
     public static boolean winInRow(int[][] board, int row, int piece) {
-        for (int x = 0; x < board[row].length - 2; x++) //Since the size of the board can be up to 5x5, we have to iterate twice to check all possible row combinations
+        for (int x = 0; x < board[row].length - 2; x++) //Since the size of the board can be up to 5x5, the custom "board[row].length - 2" always allows for the right number of iterations
         {
-            if (board[row][x] == piece && board[row][x+1] == piece && board[row][x+2] == piece) {
+            if (board[row][x] == piece && board[row][x+1] == piece && board[row][x+2] == piece) { //in the specified row, we check the first legal spot, followed by the next spot (x+1), and then the third spot (x+2)
                 return true;
             }
         }
@@ -148,12 +148,12 @@ public class TicTacToe extends Canvas {
     public static boolean winInColumn(int[][] board, int column, int piece) {
         int[] storage = new int[5];
         {
-            for (int y = 0; y <= board.length - 1; y++) {
+            for (int y = 0; y <= board.length - 1; y++) { //as it is harder to access columns directly, we instead store all values of the column into a 1D array and then check if consecutive entries are the same
                 storage[y] = board[y][column];
             }
-            for (int x = 0; x < 3; x++) //Since the size of the board can be up to 5x5, we have to iterate twice to check all possible row combinations
+            for (int x = 0; x < 3; x++) //Since the size of the board can be up to 5x5, we have to iterate at least twice to check all possible column combinations
             {
-                if (storage[x] == piece && storage[x+1] == piece && storage[x+2] == piece) {
+                if (storage[x] == piece && storage[x+1] == piece && storage[x+2] == piece) { //after putting the column values into a 1D array, we check to see if the consecutive entries are equivalent
                     return true;
                 }
             }
@@ -170,11 +170,11 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInDiagonalBS(int[][] board, int piece)
     {
-        for(int x = 0; x <= board.length-3; x++)
+        for(int x = 0; x <= board.length-3; x++) //For every case, we have to iterate "board.length-3" times to check every valid row where a backslash diagonal can start
         {
-            for(int y = 0; y <= board[0].length-3; y++)
+            for(int y = 0; y <= board[0].length-3; y++) //For every case, we have to iterate "board.length-3" times to check every valid column where a backslash diagonal can start
             {
-                if(board[x][y] == piece && board[x+1][y+1] == piece && board[x+2][y+2] == piece)
+                if(board[x][y] == piece && board[x+1][y+1] == piece && board[x+2][y+2] == piece) //check the first valid entry, then iterate one row and column, then iterate one more row and column and check if the values equal "piece"
                 {
                     return true;
                 }
@@ -192,10 +192,10 @@ public class TicTacToe extends Canvas {
      */
     public static boolean winInDiagonalFS(int[][] board, int piece)
     {
-        for(int x = 0; x <= board.length-3; x++)
+        for(int x = 0; x <= board.length-3; x++) //For every case, we have to iterate "board.length-3" times to check every valid row where a backwards diagonal can start
         {
-            for(int y = board[0].length-1; y >= 2; y--)
-            {
+            for(int y = board[0].length-1; y >= 2; y--) //the starting point of our backslash HAS to be in the top right side of the board, so we have to access the last columns first. From there, the selected algorithim means we iterate the exact number of times to find the permitted columns where
+            {                                           //the forward diagonal can start
                 if(board[x][y] == piece && board[x+1][y-1] == piece && board[x+2][y-2] == piece)
                 {
                     return true;
@@ -222,7 +222,7 @@ public class TicTacToe extends Canvas {
                 if(canPlay(board, x, y))
                 {
                     play(board, x, y, piece);
-                    if(winInAnyColumn(board, piece) || winInAnyRow(board, piece) || winInAnyDiagonal(board, piece))
+                    if(winInAnyColumn(board, piece) || winInAnyRow(board, piece) || winInAnyDiagonal(board, piece)) //if we can win at a certain position, this condition is true
                     {
                         play(board, x, y, 0);
                         hintSpot[0] = x;
@@ -236,7 +236,7 @@ public class TicTacToe extends Canvas {
                 }
             }
         }
-        hintSpot[0] = -1;
+        hintSpot[0] = -1; //return a [-1,-1] array if we can't win
         hintSpot[1] = -1;
         return hintSpot;
     }
