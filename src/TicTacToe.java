@@ -38,24 +38,50 @@ public class TicTacToe extends Canvas {
      * STUDENT CODE
      * ---------------------------------------------------------------------------------------------------------- */
 
-    //Put your code here
+
     //createBoard
+    /**
+     * Returns a 2D array of integer type which is used to determine the dimensions of the board
+     * @param rows desired number of rows in the board
+     * @param columns desired number of columns in the board
+     * @return a 2D int array with the specified number of rows and columns
+     */
     public static int[][] createBoard(int rows, int columns) {
         int[][] board = new int[rows][columns];
         return board;
     }
 
     //rowsIn
+
+    /**
+     * Returns the number of rows in the board
+     * @param board pass the created 2D int array; the tictactoe board
+     * @return an int that represents the number of rows
+     */
     public static int rowsIn(int[][] board) {
         return board.length;
     }
 
     //columnsIn
+
+    /**
+     * Returns the number of columns in the board
+     * @param board pass the created 2D int array; the tictactoe board
+     * @return an int that represents the number of columns
+     */
     public static int columnsIn(int[][] board) {
         return board[0].length;
     }
 
     //canPlay
+
+    /**
+     * Returns a boolean that represents if a spot is playable; if there is no piece on a given spot
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param row the specific row where we want to check if a spot is occupied
+     * @param column the specified column where we want to check if a spot is occupied
+     * @return true if the spot is empty (0), else returns false
+     */
     public static boolean canPlay(int[][] board, int row, int column) {
         if (board[row][column] == 0) {
             return true;
@@ -64,11 +90,24 @@ public class TicTacToe extends Canvas {
     }
 
     //play
+
+    /**
+     * Allows for the user or computer to play a piece at a specified row and column
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param row the specific row where we want to play a piece
+     * @param column the specific column where we want to play a piece
+     * @param piece the value of the piece we want to play (1 or 2)
+     */
     public static void play(int[][] board, int row, int column, int piece) {
         board[row][column] = piece;
     }
 
     //full
+    /**
+     * Returns a boolean to see if any spot on the created board is empty; ie: equal to zero. If a spot is empty, the board is not full
+     * @param board pass the created 2D int array; the tictactoe board
+     * @return false if any spot is empty, else return true if ALL spots are not empty
+     */
     public static boolean full(int[][] board) {
         for (int x = 0; x <= board.length - 1; x++) {
             for (int y = 0; y <= board[0].length - 1; y++) {
@@ -81,6 +120,13 @@ public class TicTacToe extends Canvas {
     }
 
     //wininRow
+    /**
+     * Returns a boolean that determines if we have three of one kind of piece, consecutively in a row
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param row pass the row we want check for consecutive matches
+     * @param piece pass the piece we want to check (if it occurs three times in a row)
+     * @return true if the piece occurs three times consecutively in the specified row, else false
+     */
     public static boolean winInRow(int[][] board, int row, int piece) {
         for (int x = 0; x < board[row].length - 2; x++) //Since the size of the board can be up to 5x5, we have to iterate twice to check all possible row combinations
         {
@@ -92,6 +138,13 @@ public class TicTacToe extends Canvas {
     }
 
     //winInColumn
+    /**
+     * Returns a boolean that determines if we have three of one kind of piece, consecutively in a column
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param column pass the column we want check for consecutive matches
+     * @param piece pass the piece we want to check (if it occurs three times in a column)
+     * @return true if the piece occurs three times consecutively in the specified column, else false
+     */
     public static boolean winInColumn(int[][] board, int column, int piece) {
         int[] storage = new int[5];
         {
@@ -107,7 +160,14 @@ public class TicTacToe extends Canvas {
             return false;
         }
     }
+
     //winInDiagonalBS
+    /**
+     * Boolean that checks if there is three consecutive occurences of a specified piece in a backslash (\) formation
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param piece pass the piece that we want to check for in the backslash formation
+     * @return true if there is three consecutive occurences of the same piece in a backslash formation, else false
+     */
     public static boolean winInDiagonalBS(int[][] board, int piece)
     {
         for(int x = 0; x <= board.length-3; x++)
@@ -122,7 +182,14 @@ public class TicTacToe extends Canvas {
         }
         return false;
     }
+
     //winInDigonalFS
+    /**
+     * Boolean that checks if there is three consecutive occurences of a specified piece in a forwardslash (/) formation
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param piece pass the piece that we want to check for in the forwardslash formation
+     * @return true if there is three consecutive occurences of the same piece in a forwardslash formation, else false
+     */
     public static boolean winInDiagonalFS(int[][] board, int piece)
     {
         for(int x = 0; x <= board.length-3; x++)
@@ -137,7 +204,14 @@ public class TicTacToe extends Canvas {
         }
         return false;
     }
+
     //hint
+    /**
+     * Returns an int array, with the most optimal spot the user should play to win or avoid losing the game
+     * @param board pass the created 2D int array; the tictactoe board
+     * @param piece piece pass the piece that we want to check for in the forward formation
+     * @return an int array with the row and column to play if that wins a user the game or prevents them from losing; returns -1 if there is no optimal spot
+     */
     public static int[] hint(int[][] board, int piece)
     {
         int[] hintSpot = new int[2];
