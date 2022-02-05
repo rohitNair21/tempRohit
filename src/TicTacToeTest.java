@@ -141,7 +141,7 @@ class TicTacToeTest {
         int x = 2;
         int y = 2; //these x,y correspond to row 3, column 3 on the below board; this spot is occupied
         int[][] testArray = {{1,0,0}, {2,1,0},{0,1,2}};
-        assertFalse(TicTacToe.canPlay(testArray, x, y)); //since this spot is taken, canPlay should be false
+        assertFalse(TicTacToe.canPlay(testArray, x, y)); //since this spot is taken, canPlay should be falsee
     }
 
     @org.junit.jupiter.api.Test
