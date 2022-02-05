@@ -98,6 +98,6 @@ public class tutorial2 {
         //System.out.println(columnsIn(board));
         //System.out.println(winInColumn(board, 4, 2));
         System.out.println(winInDiagonalFS(board, 2));
-        System.out.println(full(board));
+        System.out.println(full(board));p
     }
 }
