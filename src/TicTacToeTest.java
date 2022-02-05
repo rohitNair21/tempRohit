@@ -58,7 +58,7 @@ class TicTacToeTest {
 
     @org.junit.jupiter.api.Test
     /**
-     * Compare the number of rows detected by rowsIn function to the expected result; non-square to differentiate between row and column return.
+     * Compare the number of rows detected by rowsIn function to the expected result; non-square to differentiate between row and column return
      */
     void rowsIn_3x4() {
         int x = 3;
