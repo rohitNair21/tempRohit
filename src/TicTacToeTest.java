@@ -311,7 +311,7 @@ class TicTacToeTest {
 
     @org.junit.jupiter.api.Test
     /**
-     *
+     * Checks to see that the function returns false since there is NO BS diagonal in this array
      */
     void no_winInDiagonalBS_4x4() {
 
