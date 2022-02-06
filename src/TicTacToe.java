@@ -17,6 +17,13 @@ import java.util.List;
  * @author Jonathan Hudson
  * @version 1.0
  */
+
+/**
+ * Rohit Nair
+ * Feb 5, 2022
+ * T06
+ */
+
 public class TicTacToe extends Canvas {
 
     //GAME PIECE CONSTANTS (public for visibility for JUnit Test)
@@ -74,7 +81,6 @@ public class TicTacToe extends Canvas {
     }
 
     //canPlay
-
     /**
      * Returns a boolean that represents if a spot is playable; if there is no piece on a given spot
      * @param board pass the created 2D int array; the tictactoe board
