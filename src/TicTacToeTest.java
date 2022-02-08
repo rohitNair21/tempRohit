@@ -71,8 +71,9 @@ class TicTacToeTest {
     void rowsIn_3x4() {
         int x = 3;
         int y = 4;
+        int expectedRow = 3;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.rowsIn(testArray) == 3);
+        assertTrue(TicTacToe.rowsIn(testArray) == expectedRow);
     }
 
     @org.junit.jupiter.api.Test
@@ -82,9 +83,9 @@ class TicTacToeTest {
     void rowsIn_4x3() {
         int x = 4;
         int y = 3;
-        long d = x;
+        int expectedRow = 4;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.rowsIn(testArray) == 4);
+        assertTrue(TicTacToe.rowsIn(testArray) == expectedRow);
     }
 
     @org.junit.jupiter.api.Test
@@ -94,8 +95,9 @@ class TicTacToeTest {
     void rowsIn_5x4() {
         int x = 5;
         int y = 4;
+        int expectedRow = 5;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.rowsIn(testArray) == 5);
+        assertTrue(TicTacToe.rowsIn(testArray) == expectedRow);
     }
 
     @org.junit.jupiter.api.Test
@@ -105,8 +107,9 @@ class TicTacToeTest {
     void columnsIn_3x4() {
         int x = 3;
         int y = 4;
+        int expectedColumn =  4;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.columnsIn(testArray) == 4);
+        assertTrue(TicTacToe.columnsIn(testArray) == expectedColumn);
     }
 
     @org.junit.jupiter.api.Test
@@ -116,8 +119,9 @@ class TicTacToeTest {
     void columnsIn_4x3() {
         int x = 4;
         int y = 3;
+        int expectedColumn = 3;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.columnsIn(testArray) == 3);
+        assertTrue(TicTacToe.columnsIn(testArray) == expectedColumn);
     }
 
     @org.junit.jupiter.api.Test
@@ -127,8 +131,9 @@ class TicTacToeTest {
     void columnsIn_4x5() {
         int x = 4;
         int y = 5;
+        int expectedColumn = 5;
         int[][] testArray = new int[x][y];
-        assertTrue(TicTacToe.columnsIn(testArray) == 5);
+        assertTrue(TicTacToe.columnsIn(testArray) == expectedColumn);
     }
 
     @org.junit.jupiter.api.Test
@@ -223,8 +228,9 @@ class TicTacToeTest {
      */
     void no_winInRow_4x3() {
         int x = 0;
+        int piece = 2;
         int[][] testArray = {{2,1,2}, {1,2,1}, {1,1,1}, {2,1,2}};
-        assertFalse(TicTacToe.winInRow(testArray,x,2)); //This statement should be false since we clearly see there is not 3 occurrences of '2' in row 1
+        assertFalse(TicTacToe.winInRow(testArray,x,piece)); //This statement should be false since we clearly see there is not 3 occurrences of '2' in row 1
     }
 
     @org.junit.jupiter.api.Test
@@ -233,8 +239,9 @@ class TicTacToeTest {
      */
     void no_winInRow_5x5() {
         int x = 2;
+        int piece = 1;
         int[][] testArray = {{2,1,2,1,1}, {1,2,1,2,2}, {1,1,2,2,1}, {2,1,2,1,1}, {1,2,2,1,1}};
-        assertFalse(TicTacToe.winInRow(testArray,x,1)); //This statement should be false; although row 2 has 3 occurrences of 1, they are not consecutive
+        assertFalse(TicTacToe.winInRow(testArray,x,piece)); //This statement should be false; although row 2 has 3 occurrences of 1, they are not consecutive
     }
 
     @org.junit.jupiter.api.Test
@@ -243,8 +250,9 @@ class TicTacToeTest {
      */
     void winInRow_3x3() {
         int x = 2;
+        int piece = 1;
         int[][] testArray = {{2,1,0}, {1,2,1}, {1,1,1}};
-        assertTrue(TicTacToe.winInRow(testArray,x,1)); //This statement should be true; row 3 has 3 consecutive of the same piece "1"
+        assertTrue(TicTacToe.winInRow(testArray,x,piece)); //This statement should be true; row 3 has 3 consecutive of the same piece "1"
     }
 
     @org.junit.jupiter.api.Test
@@ -253,8 +261,9 @@ class TicTacToeTest {
      */
     void winInRow_4x3() {
         int x = 3;
+        int piece = 2;
         int[][] testArray = {{2,1,2}, {1,2,1}, {1,2,0}, {2,2,2}};
-        assertTrue(TicTacToe.winInRow(testArray,x,2)); //This statement should be true; row 4 has 3 consecutive of the same piece "2"
+        assertTrue(TicTacToe.winInRow(testArray,x,piece)); //This statement should be true; row 4 has 3 consecutive of the same piece "2"
     }
 
     @org.junit.jupiter.api.Test
@@ -263,8 +272,9 @@ class TicTacToeTest {
      */
     void winInRow_5x5() {
         int x = 1;
+        int piece = 2;
         int[][] testArray = {{0,1,2,1,1}, {0,2,2,2,1}, {1,1,2,2,1}, {2,0,2,1,1}, {1,2,0,0,1}};
-        assertTrue(TicTacToe.winInRow(testArray,x,2)); //This statement should be true; row 2 has 3 consecutive of the same piece between the "1"s
+        assertTrue(TicTacToe.winInRow(testArray,x,piece)); //This statement should be true; row 2 has 3 consecutive of the same piece between the "1"s
     }
 
     /**
@@ -273,8 +283,9 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void no_winInColumn_3x4() {
         int y = 0;
+        int piece = 1;
         int[][] testArray = {{2,1,2,2}, {1,2,1}, {1,1,1}, {2,1,2,2}};
-        assertFalse(TicTacToe.winInColumn(testArray,y,1)); //Should return false since there is not three consecutive occurrences of "1" in column 1
+        assertFalse(TicTacToe.winInColumn(testArray,y,piece)); //Should return false since there is not three consecutive occurrences of "1" in column 1
     }
 
     /**
@@ -283,8 +294,9 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void no_winInColumn_5x5() {
         int y = 3;
+        int piece = 2;
         int[][] testArray = {{2,1,2,1,1}, {1,2,2,2,1}, {1,1,2,2,1}, {2,1,2,1,1}, {1,2,2,1,1}};
-        assertFalse(TicTacToe.winInColumn(testArray,y,2)); //Should return false since there is not three consecutive occurrences of "2" in column 4
+        assertFalse(TicTacToe.winInColumn(testArray,y,piece)); //Should return false since there is not three consecutive occurrences of "2" in column 4
     }
 
     /**
@@ -293,8 +305,9 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInColumn_3x3() {
         int y = 1;
+        int piece = 1;
         int[][] testArray = {{2,1,2}, {1,1,2}, {2,1,1}};
-        assertTrue(TicTacToe.winInColumn(testArray,y,1)); //Should return true since there is  three consecutive occurrences of "1" in column 2
+        assertTrue(TicTacToe.winInColumn(testArray,y,piece)); //Should return true since there is  three consecutive occurrences of "1" in column 2
     }
 
     /**
@@ -303,8 +316,9 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInColumn_5x5() {
         int y = 0;
+        int piece = 1;
         int[][] testArray = {{2,0,2,1,2}, {1,2,2,2,1}, {1,0,0,2,1}, {1,1,0,1,0}, {2,0,2,1,0}};
-        assertTrue(TicTacToe.winInColumn(testArray,y,1)); //Should return true since there is three consecutive occurrences of "1" in column 1
+        assertTrue(TicTacToe.winInColumn(testArray,y,piece)); //Should return true since there is three consecutive occurrences of "1" in column 1
     }
 
     /**
@@ -313,8 +327,9 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInColumn_3x4() {
         int y = 1;
+        int piece = 1;
         int[][] testArray = {{2,1,2,1}, {1,1,2,2}, {1,1,2,1}};
-        assertTrue(TicTacToe.winInColumn(testArray,y,1)); //Should return true since there is three consecutive occurrences of "1" in column 5
+        assertTrue(TicTacToe.winInColumn(testArray,y,piece)); //Should return true since there is three consecutive occurrences of "1" in column 5
     }
 
     @org.junit.jupiter.api.Test
@@ -323,7 +338,8 @@ class TicTacToeTest {
      */
     void no_winInDiagonalBS_4x4() {
         int[][] testArray = {{0,1,2,1}, {1,1,2,0}, {1,1,2,1},{0,2,2,1}};
-        assertFalse(TicTacToe.winInDiagonalBS(testArray,1)); //Since there is no possible backslash diagonal with "1" in this array, we expect false
+        int piece = 1;
+        assertFalse(TicTacToe.winInDiagonalBS(testArray,piece)); //Since there is no possible backslash diagonal with "1" in this array, we expect false
     }
 
     @org.junit.jupiter.api.Test
@@ -332,7 +348,8 @@ class TicTacToeTest {
      */
     void winInDiagonalBS_4x4() {
         int[][] testArray = {{1,0,2,2}, {2,1,0,2}, {0,2,1,0},{0,2,0,0}};
-        assertTrue(TicTacToe.winInDiagonalBS(testArray,1)); //Starting from row 1, column 1, we see that a backslash diagonals of "1" is formed
+        int piece = 1;
+        assertTrue(TicTacToe.winInDiagonalBS(testArray,piece)); //Starting from row 1, column 1, we see that a backslash diagonals of "1" is formed
     }
 
     @org.junit.jupiter.api.Test
@@ -341,7 +358,8 @@ class TicTacToeTest {
      */
     void winInDiagonalBS_5x5() {
         int[][] testArray = {{0,1,0,1,0}, {0,2,0,0,0}, {0,0,2,1,0},{1,0,0,2,0}, {1,0,1,0,0}};
-        assertTrue(TicTacToe.winInDiagonalBS(testArray,2)); //Starting from row 2, column 2, we see that a backslash diagonals of "2" is formed (this backslash diagonal is "floating")
+        int piece = 2;
+        assertTrue(TicTacToe.winInDiagonalBS(testArray,piece)); //Starting from row 2, column 2, we see that a backslash diagonals of "2" is formed (this backslash diagonal is "floating")
     }
 
     @org.junit.jupiter.api.Test
@@ -350,7 +368,8 @@ class TicTacToeTest {
      */
     void winInDiagonalBS_4x3() {
         int[][] testArray = {{0,1,2}, {1,2,0}, {1,1,2}, {0,0,1}};
-        assertTrue(TicTacToe.winInDiagonalBS(testArray,1)); //Starting from row 2, column 1, we see that a backslash diagonals of "1" is formed (this backslash diagonal is "floating")
+        int piece = 1;
+        assertTrue(TicTacToe.winInDiagonalBS(testArray,piece)); //Starting from row 2, column 1, we see that a backslash diagonals of "1" is formed (this backslash diagonal is "floating")
     }
 
     /**
@@ -359,7 +378,8 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void no_winInDiagonalFS_4x4() {
         int[][] testArray = {{0,1,2,1}, {1,1,2,0}, {1,1,2,1},{0,2,2,1}};
-        assertFalse(TicTacToe.winInDiagonalFS(testArray, 1)); //clearly, there is no FS diagonal for 1 in this array; we expect a false return
+        int piece = 1;
+        assertFalse(TicTacToe.winInDiagonalFS(testArray, piece)); //clearly, there is no FS diagonal for 1 in this array; we expect a false return
     }
 
     /**
@@ -368,7 +388,8 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInDiagonalFS_4x4() {
         int[][] testArray = {{1,0,2,2}, {0,1,2,0}, {0,2,1,0},{0,2,0,0}};
-        assertTrue(TicTacToe.winInDiagonalFS(testArray, 2)); //Starting from row 1, column 4, a backslash diagonal of "2" is formed
+        int piece = 2;
+        assertTrue(TicTacToe.winInDiagonalFS(testArray, piece)); //Starting from row 1, column 4, a backslash diagonal of "2" is formed
     }
 
     /**
@@ -377,7 +398,8 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInDiagonalFS_5x5() {
         int[][] testArray = {{2,1,0,0,0}, {2,0,2,1,0}, {0,0,1,2,0},{0,1,0,0,0}, {0,1,1,0,2}};
-        assertTrue(TicTacToe.winInDiagonalFS(testArray, 1)); //Starting from row 2, column 4, a floating backslash diagonal of "1" is formed
+        int piece = 1;
+        assertTrue(TicTacToe.winInDiagonalFS(testArray, piece)); //Starting from row 2, column 4, a floating backslash diagonal of "1" is formed
     }
 
     /**
@@ -386,7 +408,8 @@ class TicTacToeTest {
     @org.junit.jupiter.api.Test
     void winInDiagonalFS_4x3() {
         int[][] testArray = {{0,1,1}, {0,1,2}, {1,1,0}, {2,0,1}};
-        assertTrue(TicTacToe.winInDiagonalFS(testArray,1)); //Starting from row 1, column 3, we see that a backslash diagonals of "1" is formed (this backslash diagonal is "floating")
+        int piece = 1;
+        assertTrue(TicTacToe.winInDiagonalFS(testArray,piece)); //Starting from row 1, column 3, we see that a backslash diagonals of "1" is formed (this backslash diagonal is "floating")
     }
 
     /**
@@ -396,7 +419,8 @@ class TicTacToeTest {
     void no_hint() {
         int[] noHint = {-1,-1};
         int[][] testArray = {{0,1,0,0}, {0,0,0,0}, {2,0,0,0},{0,0,0,1}};
-        Assert.assertArrayEquals(TicTacToe.hint(testArray,2), noHint);
+        int piece = 2;
+        Assert.assertArrayEquals(TicTacToe.hint(testArray,piece), noHint);
     }
 
     /**
@@ -406,7 +430,8 @@ class TicTacToeTest {
     void hint_4x4() {
         int[] hintSpot = {2,3};
         int[][] testArray = {{0,1,0,0}, {0,0,1,2}, {2,0,0,0},{0,0,0,1}};
-        Assert.assertArrayEquals(TicTacToe.hint(testArray,1), hintSpot); //We see a winning spot at row 3, column 4 so that spot should be our return value (BS diagonal hint check)
+        int piece = 1;
+        Assert.assertArrayEquals(TicTacToe.hint(testArray,piece), hintSpot); //We see a winning spot at row 3, column 4 so that spot should be our return value (BS diagonal hint check)
     }
     /**
      * Checks to see that the function returns the spot the user must play to win
@@ -415,7 +440,8 @@ class TicTacToeTest {
     void hint_3x5() {
         int[] hintSpot = {2,1};
         int[][] testArray = {{1,0,0,0,1}, {0,0,0,0,1}, {2,0,2,0,0}};
-        Assert.assertArrayEquals(TicTacToe.hint(testArray,2), hintSpot); //We see that the player MUST place a piece at row 3, column 2 to win the game (column hint check)
+        int piece = 2;
+        Assert.assertArrayEquals(TicTacToe.hint(testArray,piece), hintSpot); //We see that the player MUST place a piece at row 3, column 2 to win the game (column hint check)
     }
 
     /**
@@ -425,7 +451,8 @@ class TicTacToeTest {
     void hint_3x3() {
         int[] hintSpot = {2,2};
         int[][] testArray = {{0,2,1}, {2,0,1}, {2,2,0}};
-        Assert.assertArrayEquals(TicTacToe.hint(testArray,1), hintSpot); //We see that the player should play at row 3, column 3 to win the game (row win check)
+        int piece = 1;
+        Assert.assertArrayEquals(TicTacToe.hint(testArray,piece), hintSpot); //We see that the player should play at row 3, column 3 to win the game (row win check)
 
 }
     /**
@@ -435,7 +462,8 @@ class TicTacToeTest {
     void hint_3x4() {
         int[] hintSpot = {2,1};
         int[][] testArray = {{1,0,0,2}, {0,0,2,0}, {1,0,0,1}};
-        Assert.assertArrayEquals(TicTacToe.hint(testArray,2), hintSpot); //We see a winning spot at row 3, column 2 so that spot should be our return value (FS diagonal hint check)
+        int piece = 2;
+        Assert.assertArrayEquals(TicTacToe.hint(testArray,piece), hintSpot); //We see a winning spot at row 3, column 2 so that spot should be our return value (FS diagonal hint check)
     }
 
     /**
